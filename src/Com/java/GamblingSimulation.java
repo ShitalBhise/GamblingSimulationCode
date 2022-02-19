@@ -3,49 +3,72 @@ package Com.java;
 import java.util.Random;
 
 public class GamblingSimulation {
-	public static final int STAKE_PAY = 100;
-	public static final int PER_BET_GAME = 1;
-	public static final int win = 1;
-	public static int stake = 0;
+	public static final int STAKE_PER_DAY = 100;// STAKE PER DAY
+	public static final int BET_PER_GAME = 1;
+	public static final int WIN = 1;
+	public static int stake = 0;/// intial gambler bets with 1
+	static int daysWonCount = 0;
+	static int daysLostCount = 0;
 
-	/* 
-	Win/Loss  Check function
-	*/
+	/*
+	 * winc heck function will check if gambler wins or loss
+	 */
 
 	public static void winCheck() {
 		Random random = new Random();
-		int bet = random.nextInt();
-
-		if (bet == win) {
-			stake++; /*
-			Incrementing the stake
-			*/
-			System.out.println("Win");
+		int betReturns = random.nextInt(2);
+		if (betReturns == WIN) {
+			stake++;// incrementing
 		} else {
-			stake--; /*
-			Decrementing the stake
-			*/
-			System.out.println("Loss");
+			stake--;// decrementing
 		}
-		System.out.println("Stake = " + stake);
+
 	}
+	/*
+	 * Calculative Gambler if won or lost 50% of the stake, would resign for the day
+	 */
 
 	public static void resignDay() {
-		int totalstake = 0;
+		int totalStake = 0;
+		stake = 0;
 		while (stake != 50 && stake != -50) {
 			winCheck();
 		}
-		totalstake = stake + STAKE_PAY;
-		System.out.println("Total Stake for Resign Day :- " + totalstake);
+		totalStake = stake + STAKE_PER_DAY;
+		System.out.println("Total stake for resign for a day is  " + totalStake);
 
+	}
+	/*
+	 * After 20 days of playing every day would like to know the total amount won or
+	 * lost.
+	 */
+
+	public static void twentyDayofPlaying() {
+		int day;
+		for (day = 1; day <= 20; day++) {
+			System.out.printf("day %d\n", day);
+			resignDay();
+			if (stake == 50) {
+				daysWonCount++;
+			} else if (stake == -50) {
+				daysLostCount++;
+			}
+		}
+		System.out.printf("days won in a month = %d\ndays lost in a month = %d\n", daysWonCount, daysLostCount);
+
+	}
+
+	public static void luckyDay() {
+		if (daysWonCount > daysLostCount)
+			System.out.println("It's My Luckiest Day");
+		else
+			System.out.println("It's My Unlucky Day");
 	}
 
 	public static void main(String[] args) {
 		System.out.println("Welcome to Gambling Simulation");
-		/*
-		Calling win/loss check function
-		*/
-		resignDay();
-
+		twentyDayofPlaying();
+		luckyDay();
 	}
+
 }
