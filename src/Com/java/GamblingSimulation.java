@@ -24,10 +24,20 @@ public class GamblingSimulation {
 		System.out.println("Stake = " + stake);
 	}
 
+	public static void resignDay() {
+		int totalstake = 0;
+		while (stake != 50 && stake != -50) {
+			winCheck();
+		}
+		totalstake = stake + STAKE_PAY;
+		System.out.println("Total Stake for Resign Day :- " + totalstake);
+
+	}
+
 	public static void main(String[] args) {
 		System.out.println("Welcome to Gambling Simulation");
 		// Calling win check function
-		winCheck();
+		resignDay();
 
 	}
 }
