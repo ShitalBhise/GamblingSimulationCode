@@ -48,13 +48,13 @@ public class GamblingSimulation {
 			winCheck();
 		}
 		totalstake = stake + STAKE_PAY;
-		System.out.println("Total Stake for Resign Day :- " + totalstake);
+		System.out.println("Total Stake for Resign Day is :- " + totalstake);
 		// scanner.close();
 
 	}
 
 	public static void main(String[] args) {
-		System.out.println("Welcome to Gambling Simulation");
+		System.out.println("Welcome to Gambling Simulation : ");
 		/*
 		 * Calling win check function
 		 */
