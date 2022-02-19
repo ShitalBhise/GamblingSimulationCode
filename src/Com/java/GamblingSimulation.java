@@ -8,17 +8,23 @@ public class GamblingSimulation {
 	public static final int win = 1;
 	public static int stake = 0;
 
-	// Win Check function
+	/* 
+	Win/Loss  Check function
+	*/
 
 	public static void winCheck() {
 		Random random = new Random();
 		int bet = random.nextInt();
 
 		if (bet == win) {
-			stake++; // incrementing
+			stake++; /*
+			Incrementing the stake
+			*/
 			System.out.println("Win");
 		} else {
-			stake--; // Decrementing
+			stake--; /*
+			Decrementing the stake
+			*/
 			System.out.println("Loss");
 		}
 		System.out.println("Stake = " + stake);
@@ -36,7 +42,9 @@ public class GamblingSimulation {
 
 	public static void main(String[] args) {
 		System.out.println("Welcome to Gambling Simulation");
-		// Calling win check function
+		/*
+		Calling win/loss check function
+		*/
 		resignDay();
 
 	}
